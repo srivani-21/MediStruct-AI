@@ -1,0 +1,10 @@
+# System / OS-level packages required for MediStruct AI:
+#
+# 1. Tesseract OCR (Windows installer available at: https://github.com/UB-Mannheim/tesseract/wiki)
+#    Default Windows path: C:\Program Files\Tesseract-OCR\tesseract.exe
+#
+# 2. Poppler for Windows (pdftoppm, pdfinfo)
+#    Releases available at: https://github.com/oschwartz10612/poppler-windows/releases/
+#    Extract and set POPPLER_PATH in .env to the bin directory (e.g. C:\poppler\Library\bin)
+tesseract-ocr
+poppler-utils

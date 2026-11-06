@@ -1,0 +1,60 @@
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Python
+venv/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Node & Frontend
+node_modules/
+frontend/node_modules/
+frontend/dist/
+dist/
+.vite/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Application runtime data & vector stores
+data/uploads/*
+!data/uploads/.gitkeep
+data/page_images/*
+!data/page_images/.gitkeep
+data/database/*.db
+data/database/*.sqlite
+data/database/*.sqlite3
+!data/database/.gitkeep
+data/exports/*
+!data/exports/.gitkeep
+chroma_storage/*
+!chroma_storage/.gitkeep
+
+# Operating System & IDEs
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+# Additional protection
+.env.*
+!.env.example
+
+*.db
+*.sqlite
+*.sqlite3
+
+__pycache__/
+.pytest_cache/
+# SQLite temporary files
+*.db-shm
+*.db-wal
+*.sqlite-shm
+*.sqlite-wal
