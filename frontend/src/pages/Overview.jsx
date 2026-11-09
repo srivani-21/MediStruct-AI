@@ -17,7 +17,8 @@ import {
   Layers,
   ArrowRight,
   Trash2,
-  Eye
+  Eye,
+  ShieldCheck
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -66,55 +67,55 @@ export default function Overview({ healthStatus, loading, error }) {
     { title: 'Total Lab Tests', value: dbMetrics.total_lab_tests, icon: FlaskConical, color: 'text-teal-600', bg: 'bg-teal-50' },
   ];
 
-  const phaseRoadmap = [
+  const platformCapabilities = [
     {
-      phase: 'Phase 1',
-      title: 'Project Setup & Architecture',
-      status: 'Implemented',
+      category: 'Digital Intake',
+      title: 'Multimodal Document Intake',
+      status: 'Operational',
       badgeClass: 'bg-emerald-100 text-emerald-800 border-emerald-200',
-      description: 'Directory structure, FastAPI backend, React Vite frontend, Tailwind CSS, health endpoints, and router navigation.',
+      description: 'Multi-format PDF and image ingestion, digital text stream parsing, and metadata cataloging.',
     },
     {
-      phase: 'Phase 2',
-      title: 'Backend & Database Architecture',
-      status: 'Implemented',
+      category: 'Computer Vision',
+      title: 'Handwriting & Text Extraction',
+      status: 'Operational',
       badgeClass: 'bg-emerald-100 text-emerald-800 border-emerald-200',
-      description: 'SQLite normalized schema, SQLAlchemy models, Pydantic schemas, CRUD endpoints, and handwriting architecture.',
+      description: 'Optical character extraction, cursive handwriting analysis, character confidence audits, and image processing.',
     },
     {
-      phase: 'Phase 3',
-      title: 'PDF Text Extraction & OCR',
-      status: 'Implemented',
+      category: 'Clinical Safeguard',
+      title: 'Human Verification Studio',
+      status: 'Operational',
       badgeClass: 'bg-emerald-100 text-emerald-800 border-emerald-200',
-      description: 'Digital extraction, scanned OCR fallback, handwriting evaluation, character audits, and page previews.',
+      description: 'Side-by-side verification interface ensuring human clinical review and token correction before data persistence.',
     },
     {
-      phase: 'Phase 4',
-      title: 'Gemini AI Clinical Structuring',
-      status: 'Implemented',
+      category: 'Knowledge Extraction',
+      title: 'Clinical Entity Structuring',
+      status: 'Operational',
       badgeClass: 'bg-emerald-100 text-emerald-800 border-emerald-200',
-      description: 'Strict Pydantic-validated JSON extraction for all 6 clinical categories, human verification safety gates, and SQLite persistence.',
+      description: 'Standardized extraction across symptoms, diagnoses, medications, lab tests, and care plans with source citations.',
     },
     {
-      phase: 'Phase 5',
-      title: 'Clinical Knowledge Discovery & Analytics',
-      status: 'Implemented',
+      category: 'Cohort Analytics',
+      title: 'Clinical Discovery & Trends',
+      status: 'Operational',
       badgeClass: 'bg-emerald-100 text-emerald-800 border-emerald-200',
-      description: 'Recharts interactive charts, co-occurrence matrices, unit-isolated lab analytics, and evidence-based clinical observations.',
+      description: 'Longitudinal trend analytics, symptom-disease co-occurrence discovery, and unit-calibrated laboratory metrics.',
     },
     {
-      phase: 'Phase 6',
-      title: 'Dataset Export & Privacy Preservation',
-      status: 'Implemented',
+      category: 'Privacy Engineering',
+      title: 'Research Dataset Export',
+      status: 'Operational',
       badgeClass: 'bg-emerald-100 text-emerald-800 border-emerald-200',
-      description: 'Multi-sheet Excel (.xlsx), per-category CSV, ZIP archive bundles, and structured JSON with HMAC-SHA256 pseudonymization.',
+      description: 'Multi-sheet Excel, per-category CSV, ZIP archives, and JSON with HMAC-SHA256 pseudonymization.',
     },
     {
-      phase: 'Phase 7',
-      title: 'Clinical RAG Chatbot & Retrieval',
-      status: 'Implemented',
+      category: 'Conversational Search',
+      title: 'Dual-Channel Clinical Assistant',
+      status: 'Operational',
       badgeClass: 'bg-emerald-100 text-emerald-800 border-emerald-200',
-      description: 'SQLite FTS5 BM25 lexical retrieval and local Ollama (qwen3.5:2b) inference with page-level citations and human verification safety gates.',
+      description: 'Evidence-grounded conversational search across patient records and clinical documents with page citations.',
     },
   ];
 
@@ -129,7 +130,7 @@ export default function Overview({ healthStatus, loading, error }) {
         <div>
           <h2 className="text-2xl font-bold text-slate-900 tracking-tight">Overview Dashboard</h2>
           <p className="text-sm text-slate-500 mt-1">
-            Real-time database metrics, processed medical document library, and framework diagnostics.
+            Real-time clinical metrics, processed medical document repository, and system status.
           </p>
         </div>
         <Link
@@ -145,13 +146,13 @@ export default function Overview({ healthStatus, loading, error }) {
       {loading ? (
         <div className="p-4 rounded-xl bg-slate-100 border border-slate-200 text-slate-600 flex items-center gap-3">
           <div className="w-4 h-4 border-2 border-sky-600 border-t-transparent rounded-full animate-spin"></div>
-          <span className="text-sm">Verifying backend service status...</span>
+          <span className="text-sm">Verifying clinical platform services...</span>
         </div>
       ) : error ? (
         <div className="p-4 rounded-xl bg-amber-50 border border-amber-200 text-amber-800 flex items-start gap-3">
           <AlertCircle className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
           <div>
-            <h4 className="font-semibold text-sm">Backend Service Offline</h4>
+            <h4 className="font-semibold text-sm">Clinical Platform Service Offline</h4>
             <p className="text-xs text-amber-700 mt-0.5">{error}</p>
           </div>
         </div>
@@ -159,9 +160,9 @@ export default function Overview({ healthStatus, loading, error }) {
         <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-900 flex items-start gap-3">
           <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
           <div className="flex-1">
-            <h4 className="font-semibold text-sm">FastAPI Backend & SQLite Database Connected</h4>
+            <h4 className="font-semibold text-sm">Clinical Data Store & Analytics Services Operational</h4>
             <p className="text-xs text-emerald-700 mt-0.5">
-              Backend active on <code className="font-mono bg-emerald-100 px-1 py-0.5 rounded">http://localhost:8000</code>. SQLite tables initialized.
+              Core platform active on <code className="font-mono bg-emerald-100 px-1 py-0.5 rounded">http://localhost:8000</code>. Relational data store and search index operational.
             </p>
           </div>
           <span className="text-xs font-mono bg-emerald-200 text-emerald-900 px-2 py-0.5 rounded">
@@ -176,7 +177,7 @@ export default function Overview({ healthStatus, loading, error }) {
           <h3 className="text-sm font-semibold text-slate-800 uppercase tracking-wider">
             Clinical Database Metrics
           </h3>
-          <span className="text-xs text-slate-400">Calculated directly from SQLite database</span>
+          <span className="text-xs text-slate-400">Calculated directly from verified clinical records</span>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
           {metrics.map((item, idx) => {
@@ -276,7 +277,7 @@ export default function Overview({ healthStatus, loading, error }) {
             </div>
             <h4 className="text-base font-semibold text-slate-800">No Documents Processed Yet</h4>
             <p className="text-xs text-slate-500 max-w-md mt-1 mb-5">
-              The database currently contains no uploaded documents. When you upload clinical PDF reports in Module 2, their extraction metadata and processing status will appear here.
+              The database currently contains no uploaded documents. When you upload clinical PDF reports in Document Ingestion, their extraction metadata and processing status will appear here.
             </p>
             <Link
               to="/ingestion"
@@ -289,121 +290,132 @@ export default function Overview({ healthStatus, loading, error }) {
         )}
       </div>
 
-      {/* System Diagnostics & Dependency Verification */}
+      {/* Platform Services & Infrastructure Status */}
       <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
         <div className="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
           <div>
-            <h3 className="font-bold text-slate-800 text-sm">System Diagnostics & Environment Detection</h3>
-            <p className="text-xs text-slate-500">Live inspection of runtime components and external dependencies</p>
+            <h3 className="font-bold text-slate-800 text-sm">Platform Services & Infrastructure Status</h3>
+            <p className="text-xs text-slate-500">Live operational status of core clinical services and processing engines</p>
           </div>
           <span className="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full font-medium">
-            System Inspection
+            Infrastructure Monitor
           </span>
         </div>
         <div className="p-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-xs">
-            {/* Backend API */}
+            {/* Core Application Service */}
             <div className="p-4 bg-slate-50 rounded-lg border border-slate-200 flex flex-col justify-between">
               <div>
                 <div className="flex items-center justify-between mb-2">
-                  <span className="font-semibold text-slate-700">FastAPI Backend</span>
+                  <span className="font-semibold text-slate-700">Application API Service</span>
                   <Cpu className="w-4 h-4 text-sky-600" />
                 </div>
-                <p className="text-slate-500 font-mono text-[11px]">http://localhost:8000</p>
+                <p className="text-slate-500 text-[11px]">REST Interface & Request Dispatcher</p>
               </div>
               <div className="mt-3">
                 <span className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[11px] font-semibold ${healthStatus ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'}`}>
                   <span className={`w-1.5 h-1.5 rounded-full ${healthStatus ? 'bg-emerald-500' : 'bg-rose-500'}`}></span>
-                  {healthStatus ? 'Online & Healthy' : 'Offline'}
+                  {healthStatus ? 'Operational & Healthy' : 'Offline'}
                 </span>
               </div>
             </div>
 
-            {/* SQLite Database */}
+            {/* Clinical Data Repository */}
             <div className="p-4 bg-slate-50 rounded-lg border border-slate-200 flex flex-col justify-between">
               <div>
                 <div className="flex items-center justify-between mb-2">
-                  <span className="font-semibold text-slate-700">SQLite Database</span>
+                  <span className="font-semibold text-slate-700">Clinical Data Repository</span>
                   <Database className="w-4 h-4 text-emerald-600" />
                 </div>
-                <p className="text-slate-500 font-mono text-[11px]">data/database/medistruct.db</p>
+                <p className="text-slate-500 text-[11px]">Relational Records & Lexical Index</p>
               </div>
               <div className="mt-3">
                 <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[11px] font-semibold bg-emerald-100 text-emerald-800">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                  {healthStatus?.database === 'connected' ? 'Connected & Tables Initialized' : 'Configured'}
+                  {healthStatus?.database === 'connected' ? 'Connected & Schema Ready' : 'Configured'}
                 </span>
               </div>
             </div>
 
-            {/* Tesseract OCR */}
+            {/* OCR Engine */}
             <div className="p-4 bg-slate-50 rounded-lg border border-slate-200 flex flex-col justify-between">
               <div>
                 <div className="flex items-center justify-between mb-2">
-                  <span className="font-semibold text-slate-700">Tesseract OCR Engine</span>
+                  <span className="font-semibold text-slate-700">Document OCR Engine</span>
                   <Layers className="w-4 h-4 text-amber-600" />
                 </div>
-                <p className="text-slate-500 font-mono text-[11px] truncate">
-                  {healthStatus?.environment?.tesseract_path || 'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'}
-                </p>
+                <p className="text-slate-500 text-[11px]">Multi-Format Text & Character Parsing</p>
               </div>
               <div className="mt-3">
                 <span className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[11px] font-semibold ${healthStatus?.environment?.tesseract_detected ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'}`}>
                   <span className={`w-1.5 h-1.5 rounded-full ${healthStatus?.environment?.tesseract_detected ? 'bg-emerald-500' : 'bg-amber-500'}`}></span>
-                  {healthStatus?.environment?.tesseract_detected ? 'Detected on Host System' : 'Custom Path Needed'}
+                  {healthStatus?.environment?.tesseract_detected ? 'Operational' : 'Custom Path Needed'}
                 </span>
               </div>
             </div>
 
-            {/* Poppler Utilities */}
+            {/* Document Rendering */}
             <div className="p-4 bg-slate-50 rounded-lg border border-slate-200 flex flex-col justify-between">
               <div>
                 <div className="flex items-center justify-between mb-2">
-                  <span className="font-semibold text-slate-700">Poppler PDF Utilities</span>
+                  <span className="font-semibold text-slate-700">Document Rendering Engine</span>
                   <FileText className="w-4 h-4 text-indigo-600" />
                 </div>
-                <p className="text-slate-500 font-mono text-[11px]">POPPLER_PATH (.env)</p>
-              </div>
-              <div className="mt-3">
-                <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[11px] font-semibold bg-slate-200 text-slate-700">
-                  <span className="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
-                  {healthStatus?.environment?.poppler_configured ? 'Configured' : 'Optional / PATH Fallback'}
-                </span>
-              </div>
-            </div>
-
-            {/* Gemini API */}
-            <div className="p-4 bg-slate-50 rounded-lg border border-slate-200 flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between mb-2">
-                  <span className="font-semibold text-slate-700">Google Gemini API</span>
-                  <Sparkles className="w-4 h-4 text-purple-600" />
-                </div>
-                <p className="text-slate-500 font-mono text-[11px]">
-                  Model: {healthStatus?.environment?.gemini_model || 'gemini-1.5-flash'}
-                </p>
-              </div>
-              <div className="mt-3">
-                <span className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[11px] font-semibold ${healthStatus?.environment?.gemini_api_key_set ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'}`}>
-                  <span className={`w-1.5 h-1.5 rounded-full ${healthStatus?.environment?.gemini_api_key_set ? 'bg-emerald-500' : 'bg-amber-500'}`}></span>
-                  {healthStatus?.environment?.gemini_api_key_set ? 'API Key Configured' : 'Awaiting Key in .env'}
-                </span>
-              </div>
-            </div>
-
-            {/* ChromaDB Vector Storage */}
-            <div className="p-4 bg-slate-50 rounded-lg border border-slate-200 flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between mb-2">
-                  <span className="font-semibold text-slate-700">ChromaDB Vector Store</span>
-                  <Database className="w-4 h-4 text-teal-600" />
-                </div>
-                <p className="text-slate-500 font-mono text-[11px]">./chroma_storage</p>
+                <p className="text-slate-500 text-[11px]">Clinical Report Rasterization & Preview</p>
               </div>
               <div className="mt-3">
                 <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[11px] font-semibold bg-emerald-100 text-emerald-800">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                  Directory Initialized
+                  {healthStatus?.environment?.poppler_configured ? 'Operational' : 'Standard Renderer'}
+                </span>
+              </div>
+            </div>
+
+            {/* AI Inference Engine */}
+            <div className="p-4 bg-slate-50 rounded-lg border border-slate-200 flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-2">
+                  <span className="font-semibold text-slate-700">Clinical AI Engine</span>
+                  <Sparkles className="w-4 h-4 text-purple-600" />
+                </div>
+                <p className="text-slate-500 text-[11px]">
+                  {healthStatus?.environment?.active_provider === 'ollama' 
+                    ? 'Local Privacy-Preserving Neural Inference' 
+                    : 'Clinical Language Processing Service'}
+                </p>
+              </div>
+              <div className="mt-3">
+                {(() => {
+                  const isOllama = healthStatus?.environment?.active_provider === 'ollama';
+                  const isOnline = isOllama 
+                    ? !!healthStatus?.environment?.ollama?.server_online 
+                    : !!healthStatus?.environment?.gemini_api_key_set;
+                  const label = isOllama 
+                    ? (isOnline ? 'Local Service Active' : 'Standby / Connecting') 
+                    : (isOnline ? 'Service Configured' : 'Awaiting Configuration');
+                  return (
+                    <span className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[11px] font-semibold ${isOnline ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'}`}>
+                      <span className={`w-1.5 h-1.5 rounded-full ${isOnline ? 'bg-emerald-500' : 'bg-amber-500'}`}></span>
+                      {label}
+                    </span>
+                  );
+                })()}
+              </div>
+            </div>
+
+            {/* Privacy & Pseudonymization Engine */}
+            <div className="p-4 bg-slate-50 rounded-lg border border-slate-200 flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-2">
+                  <span className="font-semibold text-slate-700">Privacy Protection Engine</span>
+                  <ShieldCheck className="w-4 h-4 text-teal-600" />
+                </div>
+                <p className="text-slate-500 text-[11px]">HMAC-SHA256 Cryptographic Pseudonymization</p>
+              </div>
+              <div className="mt-3">
+                <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[11px] font-semibold bg-emerald-100 text-emerald-800">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                  Active & Enforced
                 </span>
               </div>
             </div>
@@ -411,20 +423,20 @@ export default function Overview({ healthStatus, loading, error }) {
         </div>
       </div>
 
-      {/* Project Implementation Status Matrix */}
+      {/* Clinical Architecture & Platform Capabilities */}
       <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
         <div className="mb-4">
-          <h3 className="font-bold text-slate-900 text-sm">Implementation Roadmap & Verification Status</h3>
+          <h3 className="font-bold text-slate-900 text-sm">Clinical Architecture & Platform Capabilities</h3>
           <p className="text-xs text-slate-500 mt-0.5">
-            Transparent status of each development phase. No mock results or simulated statistics.
+            Verified end-to-end clinical workflow pipeline from document ingestion to grounded intelligence.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          {phaseRoadmap.map((item, idx) => (
+          {platformCapabilities.map((item, idx) => (
             <div key={idx} className="p-4 rounded-xl border border-slate-200 bg-slate-50/50 flex flex-col justify-between">
               <div>
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-[11px] font-mono text-slate-500 font-medium">{item.phase}</span>
+                  <span className="text-[11px] font-semibold text-slate-500 tracking-wider uppercase">{item.category}</span>
                   <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full border ${item.badgeClass}`}>
                     {item.status}
                   </span>

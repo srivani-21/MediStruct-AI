@@ -32,14 +32,14 @@ import ClinicalRAG from './pages/ClinicalRAG';
 const MANDATORY_PROJECT_TITLE = 
   "MediStruct AI: A Smart Healthcare Dataset Generation and Clinical Knowledge Discovery Framework from Unstructured Medical Documents";
 
-// Navigation definition for the six primary modules
+// Navigation definition for primary modules: Clinical Discovery, Dataset Export, Clinical RAG
 const NAVIGATION_ITEMS = [
   { path: '/', label: 'Overview', icon: BarChart3, exact: true },
   { path: '/ingestion', label: 'Document Ingestion', icon: FileText },
   { path: '/records', label: 'Structured Records', icon: Database },
   { path: '/discovery', label: 'Clinical Discovery', icon: Activity },
   { path: '/export', label: 'Dataset Export', icon: Download },
-  { path: '/rag', label: 'Clinical RAG', icon: MessageSquare },
+  { path: '/rag', label: 'Clinical Assistant', icon: MessageSquare },
 ];
 
 function AppLayout({ healthStatus, loading, error }) {
@@ -105,19 +105,19 @@ function AppLayout({ healthStatus, loading, error }) {
             })}
           </nav>
 
-          {/* Backend Status Card in Sidebar */}
+          {/* Platform Services Status Card in Sidebar */}
           <div className="p-4 border-t border-slate-800 text-xs">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-slate-400 font-medium">Backend Server</span>
+              <span className="text-slate-400 font-medium">Platform Services</span>
               <span className="flex items-center gap-1.5">
                 <span className={`w-2 h-2 rounded-full ${healthStatus ? 'bg-emerald-400' : 'bg-rose-400'}`}></span>
                 <span className={healthStatus ? 'text-emerald-400 font-semibold text-[11px]' : 'text-rose-400 font-semibold text-[11px]'}>
-                  {healthStatus ? 'Online' : 'Offline'}
+                  {healthStatus ? 'Operational' : 'Service Offline'}
                 </span>
               </span>
             </div>
             <p className="text-slate-500 text-[11px] truncate">
-              {healthStatus ? `FastAPI v${healthStatus.version} • SQLite ready` : 'Waiting for localhost:8000'}
+              {healthStatus ? 'Clinical Analytics Core Active' : 'Connecting to local services...'}
             </p>
             <div className="mt-3 pt-3 border-t border-slate-800/60 flex items-center justify-between text-[10px] text-slate-400">
               <a 
@@ -126,10 +126,10 @@ function AppLayout({ healthStatus, loading, error }) {
                 rel="noreferrer" 
                 className="hover:text-sky-400 flex items-center gap-1"
               >
-                <span>FastAPI Docs</span>
+                <span>API Reference</span>
                 <ExternalLink className="w-2.5 h-2.5" />
               </a>
-              <span>Academic Prototype</span>
+              <span>Clinical Research Edition</span>
             </div>
           </div>
         </aside>
@@ -148,11 +148,12 @@ function AppLayout({ healthStatus, loading, error }) {
                 </p>
               </div>
               <div className="flex items-center gap-2 self-start lg:self-auto">
-                <span className="text-[11px] font-medium px-2.5 py-1 rounded bg-slate-100 text-slate-600 border border-slate-200">
-                  React 18 + Vite + Tailwind
+                <span className="inline-flex items-center gap-1.5 text-[11px] font-medium px-2.5 py-1 rounded bg-emerald-50 text-emerald-700 border border-emerald-200">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                  System Ready
                 </span>
-                <span className="text-[11px] font-medium px-2.5 py-1 rounded bg-sky-50 text-sky-700 border border-sky-200">
-                  FastAPI REST
+                <span className="text-[11px] font-medium px-2.5 py-1 rounded bg-slate-100 text-slate-700 border border-slate-200">
+                  Clinical Research Platform
                 </span>
               </div>
             </div>
@@ -193,7 +194,7 @@ export default function App() {
         setError(null);
       } catch (err) {
         console.error("Backend health check error:", err);
-        setError("Backend API is currently offline. Start FastAPI backend on http://localhost:8000.");
+        setError("Clinical backend service is currently offline. Ensure local services are running on http://localhost:8000.");
       } finally {
         setLoading(false);
       }

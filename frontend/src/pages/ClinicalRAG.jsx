@@ -48,9 +48,9 @@ export default function ClinicalRAG() {
       id: 'welcome',
       role: 'assistant',
       content: (
-        "Welcome to the MediStruct AI Clinical Knowledge Retrieval Assistant. " +
-        "You can ask targeted clinical questions regarding your uploaded medical documents. " +
-        "All answers are synthesized by your local Ollama model (qwen3.5:2b) and grounded strictly in verified document excerpts with page citations."
+        "Welcome to the MediStruct AI Clinical Research Assistant. " +
+        "You can ask targeted clinical questions regarding your uploaded medical documents and structured patient records. " +
+        "All answers are grounded strictly in verified clinical evidence with source and page-level citations."
       ),
       sources: [],
       sufficient_evidence: true,
@@ -207,18 +207,18 @@ export default function ClinicalRAG() {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
-            <h2 className="text-2xl font-bold text-slate-900 tracking-tight">Clinical RAG Chatbot</h2>
-            <span className="text-xs bg-emerald-100 text-emerald-800 font-medium px-2.5 py-0.5 rounded-full border border-emerald-200">
-              Phase 7 • Production
+            <h2 className="text-2xl font-bold text-slate-900 tracking-tight">Clinical Research Assistant</h2>
+            <span className="text-xs bg-sky-100 text-sky-800 font-medium px-2.5 py-0.5 rounded-full border border-sky-200">
+              Grounded Clinical AI
             </span>
           </div>
           <p className="text-sm text-slate-500 mt-1">
-            Evidence-grounded conversational AI using SQLite FTS5 BM25 retrieval and local Ollama (<code className="font-mono text-slate-700 bg-slate-100 px-1 py-0.2 rounded">qwen3.5:2b</code>) with page-level citations.
+            Evidence-grounded conversational search across patient records and clinical documents with page-level citations.
           </p>
         </div>
         <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs text-slate-700 font-medium self-start md:self-auto">
           <div className={`w-2.5 h-2.5 rounded-full ${indexStatus.ollama_online ? 'bg-emerald-500 animate-pulse' : 'bg-rose-500'}`} />
-          <span>Ollama: {indexStatus.ollama_online ? 'Online (qwen3.5:2b)' : 'Offline / Standby'}</span>
+          <span>Assistant Engine: {indexStatus.ollama_online ? 'Active & Ready' : 'Standby / Offline'}</span>
         </div>
       </div>
 
@@ -232,7 +232,7 @@ export default function ClinicalRAG() {
             <div>
               <h3 className="font-semibold text-slate-800 text-sm">Retrieval & Scope Controls</h3>
               <p className="text-xs text-slate-500">
-                Engine: <span className="font-mono text-slate-700 font-medium">SQLite FTS5 (Lexical BM25)</span> • 100% On-Device
+                Engine: <span className="text-slate-700 font-medium">Dual-Channel Record & Document Search</span> • On-Device Privacy
               </p>
             </div>
           </div>
@@ -378,7 +378,7 @@ export default function ClinicalRAG() {
                 >
                   {/* Sender & Timestamp */}
                   <div className="flex items-center justify-between gap-4 mb-1.5 pb-1 border-b border-white/20 text-[10px] opacity-80">
-                    <span className="font-semibold">{isUser ? 'Researcher Query' : 'MediStruct AI (Ollama qwen3.5:2b)'}</span>
+                    <span className="font-semibold">{isUser ? 'Researcher Query' : 'MediStruct Clinical Assistant'}</span>
                     <span>{msg.timestamp}</span>
                   </div>
 
@@ -390,7 +390,7 @@ export default function ClinicalRAG() {
                     <div className="mt-3 p-2.5 rounded-lg bg-amber-50 border border-amber-200 text-amber-900 flex items-start gap-2">
                       <ShieldAlert className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
                       <span className="text-[11px]">
-                        Information absent from indexed records. Safe Harbor rules prevent hallucination.
+                        Information absent from indexed records. Clinical verification safeguards prevent unsupported assertions.
                       </span>
                     </div>
                   )}
@@ -455,7 +455,7 @@ export default function ClinicalRAG() {
                               </blockquote>
                               {src.relevance_score !== null && src.source_type !== 'structured_record' && (
                                 <div className="text-[10px] text-slate-400 text-right">
-                                  BM25 Rank Score: {src.relevance_score}
+                                  Relevance Rank: {src.relevance_score}
                                 </div>
                               )}
                             </div>
@@ -481,7 +481,7 @@ export default function ClinicalRAG() {
             <div className="flex items-start">
               <div className="bg-white border border-slate-200 rounded-xl rounded-bl-none p-3.5 shadow-sm text-xs text-slate-600 flex items-center gap-3">
                 <div className="w-4 h-4 border-2 border-sky-600 border-t-transparent rounded-full animate-spin"></div>
-                <span>Retrieving evidence and synthesizing grounded answer via Ollama (qwen3.5:2b)...</span>
+                <span>Searching clinical evidence and synthesizing grounded response...</span>
               </div>
             </div>
           )}
@@ -533,7 +533,7 @@ export default function ClinicalRAG() {
             </button>
           </form>
           <div className="mt-2 text-[10px] text-slate-400 flex items-center justify-between px-1">
-            <span>Retrieval augmented with SQLite FTS5 BM25 & Ollama local AI</span>
+            <span>Dual-channel retrieval across structured clinical data and verified document excerpts</span>
             <span>All responses grounded with page citations</span>
           </div>
         </div>

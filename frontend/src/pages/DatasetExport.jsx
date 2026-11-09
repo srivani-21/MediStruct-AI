@@ -240,8 +240,8 @@ export default function DatasetExport() {
         <div>
           <div className="flex items-center gap-2">
             <h2 className="text-2xl font-bold text-slate-900 tracking-tight">Dataset Export</h2>
-            <span className="text-xs bg-emerald-100 text-emerald-800 font-medium px-2.5 py-0.5 rounded-full border border-emerald-200">
-              Phase 6 • Production
+            <span className="text-xs bg-sky-100 text-sky-800 font-medium px-2.5 py-0.5 rounded-full border border-sky-200">
+              Research Data Delivery
             </span>
           </div>
           <p className="text-sm text-slate-500 mt-1">
@@ -250,7 +250,7 @@ export default function DatasetExport() {
         </div>
         <div className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-50 border border-emerald-200 rounded-lg text-xs text-emerald-700 font-medium self-start md:self-auto">
           <ShieldCheck className="w-4 h-4 text-emerald-600" />
-          <span>HIPAA Safe Harbor De-identification Active</span>
+          <span>Privacy Protection & De-identification Active</span>
         </div>
       </div>
 
@@ -451,7 +451,7 @@ export default function DatasetExport() {
           <div className="mt-3 p-3.5 rounded-lg bg-rose-50 border border-rose-200 text-rose-900 flex items-start gap-3">
             <AlertTriangle className="w-5 h-5 text-rose-600 shrink-0 mt-0.5" />
             <div className="text-xs">
-              <h5 className="font-bold">Strict HIPAA / GDPR Privacy Warning: Non-De-Identified Export</h5>
+              <h5 className="font-bold">Strict Healthcare Privacy Warning: Non-De-Identified Export</h5>
               <p className="mt-0.5 leading-relaxed text-rose-800">
                 You have unchecked de-identification. The exported dataset will contain raw patient names, internal identifiers, and free-text notes. Only proceed if you have explicit Institutional Review Board (IRB) or clinical administrative authorization.
               </p>
@@ -461,7 +461,7 @@ export default function DatasetExport() {
           <div className="mt-3 p-3.5 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-900 flex items-start gap-3">
             <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
             <div className="text-xs">
-              <span className="font-semibold">Safe Harbor Compliance Guarantee:</span>
+              <span className="font-semibold">Privacy Protection & De-identification Active:</span>
               <p className="mt-0.5 text-emerald-800">
                 Direct identifiers and file paths are fully pseudonymized. Exported files are research-ready and safe for statistical evaluation.
               </p>

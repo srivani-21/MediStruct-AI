@@ -181,12 +181,12 @@ export default function ClinicalDiscovery() {
         <div>
           <div className="flex items-center gap-2">
             <h2 className="text-2xl font-bold text-slate-900 tracking-tight">Clinical Knowledge Discovery & Analytics</h2>
-            <span className="text-xs bg-emerald-100 text-emerald-800 font-semibold px-2.5 py-0.5 rounded-full border border-emerald-200">
-              Phase 5
+            <span className="text-xs bg-sky-100 text-sky-800 font-semibold px-2.5 py-0.5 rounded-full border border-sky-200">
+              Cohort Analytics
             </span>
           </div>
           <p className="text-sm text-slate-500 mt-1">
-            Exploratory data analysis, co-occurrence patterns, and unit-isolated clinical findings generated directly from SQLite records.
+            Exploratory data analysis, co-occurrence patterns, and unit-isolated clinical findings generated directly from structured clinical records.
           </p>
         </div>
 

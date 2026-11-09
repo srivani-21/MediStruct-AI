@@ -144,7 +144,7 @@ export default function StructuredRecords() {
     } catch (err) {
       console.error("Clinical structuring failed:", err);
       setStructureError(
-        err.response?.data?.detail || "AI clinical structuring failed. Please check backend logs and Gemini API key."
+        err.response?.data?.detail || "AI clinical structuring failed. Please check backend service status."
       );
     } finally {
       setStructuring(false);
@@ -164,17 +164,17 @@ export default function StructuredRecords() {
         <div>
           <div className="flex items-center gap-2">
             <h2 className="text-2xl font-bold text-slate-900 tracking-tight">Structured Clinical Records</h2>
-            <span className="text-xs bg-emerald-100 text-emerald-800 font-semibold px-2.5 py-0.5 rounded-full border border-emerald-200">
-              Module 3 • Active
+            <span className="text-xs bg-sky-100 text-sky-800 font-semibold px-2.5 py-0.5 rounded-full border border-sky-200">
+              Standardized Records
             </span>
           </div>
           <p className="text-sm text-slate-500 mt-1">
-            Standardized healthcare datasets extracted via Gemini 3.8 Flash with full page citations and human verification gates.
+            Standardized healthcare datasets extracted from clinical documentation with page-level citations and human verification safeguards.
           </p>
         </div>
         <div className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-50 border border-emerald-200 rounded-lg text-xs text-emerald-800 font-medium self-start md:self-auto">
           <Sparkles className="w-3.5 h-3.5 text-purple-600" />
-          <span>Gemini AI Structuring: Phase 4 Active</span>
+          <span>Clinical Structuring Pipeline Active</span>
         </div>
       </div>
 

@@ -217,17 +217,17 @@ export default function DocumentIngestion() {
         <div>
           <div className="flex items-center gap-2">
             <h2 className="text-2xl font-bold text-slate-900 tracking-tight">Document Ingestion</h2>
-            <span className="text-xs bg-emerald-100 text-emerald-800 font-semibold px-2.5 py-0.5 rounded-full border border-emerald-200">
-              Module 2 • Active
+            <span className="text-xs bg-sky-100 text-sky-800 font-semibold px-2.5 py-0.5 rounded-full border border-sky-200">
+              Intake Pipeline
             </span>
           </div>
           <p className="text-sm text-slate-500 mt-1">
-            Hybrid digital extraction, Tesseract OCR, and Google GenAI Multimodal Vision for printed reports and cursive handwriting.
+            High-precision multi-format digital extraction, OCR, and handwriting evaluation for clinical records.
           </p>
         </div>
         <div className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-50 border border-emerald-200 rounded-lg text-xs text-emerald-800 font-medium self-start md:self-auto">
           <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-          <span>Multimodal Pipeline: Phase 3 Active</span>
+          <span>Intake & Extraction Pipeline Ready</span>
         </div>
       </div>
 
@@ -238,8 +238,8 @@ export default function DocumentIngestion() {
             <Settings className="w-4 h-4 text-sky-600" />
             <h3 className="font-semibold text-slate-800 text-sm">Multimodal Extraction Engine Configuration</h3>
           </div>
-          <span className="text-[11px] font-mono text-slate-500">
-            OCR: Tesseract 5.5 • Vision: Gemini 3.8 Flash
+          <span className="text-[11px] font-medium text-slate-500">
+            High-Resolution Character Detection & Text Stream Analysis
           </span>
         </div>
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs bg-slate-50 p-3.5 rounded-lg border border-slate-200">
@@ -495,7 +495,7 @@ export default function DocumentIngestion() {
             </div>
             <h4 className="text-sm font-bold text-slate-800">No Documents Ingested Yet</h4>
             <p className="text-xs text-slate-500 max-w-sm mt-1">
-              Select or drop PDF, JPG, or PNG files above to test multimodal digital extraction, OCR, and Gemini Vision.
+              Select or drop PDF, JPG, or PNG files above to process multimodal digital extraction, OCR, and clinical handwriting analysis.
             </p>
           </div>
         )}
@@ -598,7 +598,7 @@ export default function DocumentIngestion() {
                 <div className="flex items-center justify-between pb-2 border-b border-slate-200 mb-2 text-xs font-semibold text-slate-700">
                   <div className="flex items-center gap-1.5">
                     <Sparkles className="w-3.5 h-3.5 text-purple-600" />
-                    <span>Multimodal AI Transcription (Gemini 3.8 Flash)</span>
+                    <span>Automated AI Transcription</span>
                   </div>
                   {currentPage.unclear_count > 0 && (
                     <span className="text-[11px] font-semibold text-amber-800 bg-amber-100 border border-amber-200 px-2 py-0.5 rounded">
